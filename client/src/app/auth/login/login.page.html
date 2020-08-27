@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Log into existing account</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Login to be able to add and view tips.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <form #loginForm="ngForm" novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked" color="primary">Email</ion-label>
+          <ion-input [(ngModel)]="user.email" name="email" type="email" #email="ngModel" spellcheck="false"
+            autocapitalize="off" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger">
+          <p [hidden]="email.valid || submitted == false" class="ion-padding-start">
+            Email is required
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="stacked" color="primary">Password</ion-label>
+          <ion-input [(ngModel)]="user.password" name="password" type="password" #password="ngModel" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger">
+          <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+            Password is required
+          </p>
+          <p *ngIf="passwordErrors" class="ion-padding-start">
+            {{passwordErrors[0]}}
+          </p>
+          <p *ngIf="creditErrors" class="ion-padding-start">
+            {{creditErrors}}
+          </p>
+        </ion-text>
+      </ion-list>
+
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Login</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="visitRegisterPage()" color="light" expand="block">Register</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card>
+
+</ion-content>

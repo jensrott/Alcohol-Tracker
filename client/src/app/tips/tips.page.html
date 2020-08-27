@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Tips</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="error" *ngIf="error">{{error}}</div>
+  <ion-card *ngFor="let tip of tips; let i = index">
+    <ion-card-content>
+      <p>{{tip.title}}</p>
+      <p>{{tip.description}}</p>
+      <a style="display: flex; cursor: pointer" (click)="visitTipsUserDetailPage(tip.user.id)">{{tip.user.name}}</a>
+      <button style="margin-right: 0.5rem" (click)="visitDetailPage(tip.id)">Detail</button>
+      <span *ngIf="user">
+        <button *ngIf="user.id === tip.user.id" (click)="deleteTip(tip.id)">Delete</button>
+      </span>
+    </ion-card-content>
+  </ion-card>
+  <!-- <ion-card *ngIf="tips.length === 0">
+    <ion-card-content>
+      No tips created yet!
+    </ion-card-content>
+  </ion-card> -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" #fab (click)="visitCreatePage()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

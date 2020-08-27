@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="tips">{{tips[0].user.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="error" *ngIf="error">{{error}}</div>
+  <ion-card *ngFor="let tip of tips; let i = index">
+    <ion-card-content>
+      <p>{{tip.title}}</p>
+      <p>{{tip.description}}</p>
+      <p>{{tip.user.name}}</p>
+      <button style="margin-right: 0.5rem" (click)="visitDetailPage(tip.id)">Detail</button>
+      <span *ngIf="user">
+        <button *ngIf="user.name === tip.user.name" (click)="deleteTip(tip.id)">Delete</button>
+      </span>
+    </ion-card-content>
+  </ion-card>
+  <ion-button *ngIf="tips" expand="block" (click)="goBack()">Back</ion-button>
+</ion-content>

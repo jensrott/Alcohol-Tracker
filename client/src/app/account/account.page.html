@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <p *ngIf="user">Name: {{user.name}}</p>
+      <p *ngIf="user">Email: {{user.email}}</p>
+      <p *ngIf="user">Role: {{user.role}}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-button *ngIf="user" expand="block" (click)="goBack()">Back</ion-button>
+</ion-content>

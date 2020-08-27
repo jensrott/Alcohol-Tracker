@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Create a tip</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Tip</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Please be friendly.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <form #tipForm="ngForm" novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked" color="primary">Title</ion-label>
+          <ion-input [(ngModel)]="tip.title" name="title" type="title" #title="ngModel" spellcheck="false"
+            autocapitalize="off" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger">
+          <p [hidden]="title.valid || submitted == false" class="ion-padding-start">
+            Title is required
+          </p>
+          <p *ngIf="titleErrors" class="ion-padding-start">
+            {{titleErrors[0]}}
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="stacked" color="primary">Description</ion-label>
+          <ion-input [(ngModel)]="tip.description" name="description" type="description" #description="ngModel"
+            required>
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger">
+          <p [hidden]="description.valid || submitted == false" class="ion-padding-start">
+            Description is required
+          </p>
+          <p *ngIf="descriptionErrors" class="ion-padding-start">
+            {{descriptionErrors[0]}}
+          </p>
+        </ion-text>
+      </ion-list>
+
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="onSubmit(tipForm)" type="submit" expand="block">Create</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card>
+</ion-content>

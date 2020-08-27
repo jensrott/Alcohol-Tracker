@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Calculator
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Calculator</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <ion-label position="floating">Number of drinks</ion-label>
+    <ion-input [(ngModel)]="numberOfDrinks" (ngModelChange)="areaEmpty()" placeholder="5" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Drink alcohol level (%)</ion-label>
+    <ion-input [(ngModel)]="alcoholLevel" (ngModelChange)="areaEmpty()" placeholder="5.2" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Volume per drink (cl)</ion-label>
+    <ion-input placeholder="25" [(ngModel)]="volumePerDrink" (ngModelChange)="areaEmpty()" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Time since first drink (h)</ion-label>
+    <ion-input placeholder="2" [(ngModel)]="timeSinceFirstDrink" (ngModelChange)="areaEmpty()" type="number">
+    </ion-input>
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label>
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-item>
+    <ion-label position="floating">Gender</ion-label>
+    <ion-select [(ngModel)]="gender" (ionChange)="selectOptions()" ok-text="Ok" cancel-text="Cancel">
+      <ion-select-option value="male">Male</ion-select-option>
+      <ion-select-option value="female">Female</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Body weight (kg)</ion-label>
+    <ion-input placeholder="70" [(ngModel)]="bodyWeight" (ngModelChange)="areaEmpty()" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label>
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-button expand="block" [disabled]="setCalculateDisabled" (click)="calculate()">Calculate</ion-button>
+  <ion-button expand="block" (click)="reset()">Reset</ion-button>
+
+</ion-content>

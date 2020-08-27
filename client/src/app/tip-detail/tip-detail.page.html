@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="tip">{{tip.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="error" *ngIf="error">{{error}}</div>
+  <ion-card>
+    <ion-card-content>
+      <p *ngIf="tip">{{tip.description}}</p>
+      <p *ngIf="tip">{{tip.user.name}}</p>
+    </ion-card-content>
+  </ion-card>
+  <div *ngIf="user">
+    <ion-button style="display: flex" *ngIf="user.id === tip.user.id" (click)="visitEditTipPage(tip.id)">Edit</ion-button>
+  </div>
+  <ion-button *ngIf="tip" expand="block" (click)="goBack()">Back</ion-button>
+</ion-content>

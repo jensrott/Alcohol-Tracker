@@ -1,0 +1,17 @@
+{
+  "name": "drinking-app",
+  "version": "1.0.0",
+  "description": "Full stack app",
+  "scripts": {
+    "install": "cd client && npm install && cd ../backend && composer install",
+    "start:front": "cd client && npm run start",
+    "start:back": "cd backend && php artisan serve",
+    "start:back1": "php artisan serve --port 8001",
+    "start": "concurrently \"npm run start:back\"  \"npm run start:front\""
+  },
+  "author": "Jens Rottiers",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}

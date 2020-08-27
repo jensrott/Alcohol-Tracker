@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create a new account</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Create an account to add and view tips.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <form #registerForm="ngForm" novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked" color="primary">Name</ion-label>
+          <ion-input [(ngModel)]="user.name" name="name" type="text" #name="ngModel" spellcheck="false"
+            autocapitalize="off" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger">
+          <p [hidden]="name.valid || submitted == false" class="ion-padding-start">
+            Name is required
+          </p>
+          <p *ngIf="nameErrors" class="ion-padding-start">
+            {{nameErrors[0]}}
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="stacked" color="primary">Email</ion-label>
+          <ion-input [(ngModel)]="user.email" name="email" type="email" #email="ngModel" spellcheck="false"
+            autocapitalize="off" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger">
+          <p [hidden]="email.valid || submitted == false" class="ion-padding-start">
+            Email is required
+          </p>
+          <p *ngIf="emailErrors" class="ion-padding-start">
+            {{emailErrors[0]}}
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="stacked" color="primary">Password</ion-label>
+          <ion-input [(ngModel)]="user.password" name="password" type="password" #password="ngModel" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger">
+          <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+            Password is required
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="stacked" color="primary">Password</ion-label>
+          <ion-input [(ngModel)]="user.password_confirmation" name="password_confirmation" type="password"
+            #password_confirmation="ngModel" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger">
+          <p [hidden]="password_confirmation.valid || submitted == false" class="ion-padding-start">
+            Password Confirmation is required
+          </p>
+          <p *ngIf="samePasswordMsg" class="ion-padding-start">
+            {{samePasswordMsg}}
+          </p>
+        </ion-text>
+      </ion-list>
+
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="onRegister(registerForm)" type="submit" expand="block">Register</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="visitLoginPage()" color="light" expand="block">Login</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card>
+
+</ion-content>

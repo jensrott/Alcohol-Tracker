@@ -1,0 +1,47 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="false">
+    <ion-slide>
+      <img src="assets/img/undraw_city_driver.svg" class="slide-image" />
+      <h2 class="slide-title">
+        Welcome to
+        <b>Alcohol Tracker</b>
+      </h2>
+      <p>
+        The
+        <b>alcohol tracker</b> is a practical app which let's you calculate if you are still allowed to drive a car.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/undraw_having_fun.svg" class="slide-image" />
+      <h2 class="slide-title">Responsible drinking</h2>
+      <p>Drinking and driving should not go together. You should always be responsible while drinking.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/undraw_share_opinion.svg" class="slide-image" />
+      <h2 class="slide-title">Tips</h2>
+      <p>
+        If you want you can also add <b>tips</b>. This will need an account. Using the alcohol tracker is possible with
+        an
+        account </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/undraw_mobile_application.svg" class="slide-image" />
+      <h2 class="slide-title">Ready to use the app?</h2>
+      <ion-button fill="clear" (click)="startApp()">
+        Continue
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
